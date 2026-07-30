@@ -14,7 +14,7 @@ except Exception:
     client = None
 
 # 3. UI Controls
-# Added: Dropdown menu for editors to select the maximum word count
+# Dropdown menu for editors to select the maximum word count
 word_count = st.selectbox(
     "Select maximum word count:",
     [100, 200, 300, 400, 500],
@@ -33,18 +33,19 @@ if st.button("Generate Brief"):
     else:
         with st.spinner("Editing..."):
             try:
-                # UPDATED PROMPT: Dynamic word count, strict AP style, and paragraph form only
+                # UPDATED PROMPT: Now includes instructions for a suggested headline
                 prompt = f"""
                 You are a veteran newspaper copy editor. Take the following press release 
                 and rewrite it into a clean, objective business brief for a newspaper.
 
                 Strict Rules:
-                1. Keep the total word count strictly under {word_count} words.
-                2. Write ONLY in standard paragraph form. Do not use bullet points, numbered lists, or special formatting.
-                3. Write in strict AP (Associated Press) style (third-person, objective tone, correct dateline formatting, proper title capitalization, etc.).
-                4. Focus only on the core news: Who, what, when, where, and why.
-                5. Strip out all marketing fluff, corporate jargon, and exaggerated claims.
-                6. Omit promotional quotes from executives unless they state a crucial material fact.
+                1. Provide a suggested newspaper headline at the very top, formatted as "HEADLINE: [Your Suggested Headline]".
+                2. Keep the total word count of the brief strictly under {word_count} words.
+                3. Write the body of the brief ONLY in standard paragraph form. Do not use bullet points, numbered lists, or special formatting.
+                4. Write in strict AP (Associated Press) style (third-person, objective tone, correct dateline formatting, proper title capitalization, etc.).
+                5. Focus only on the core news: Who, what, when, where, and why.
+                6. Strip out all marketing fluff, corporate jargon, and exaggerated claims.
+                7. Omit promotional quotes from executives unless they state a crucial material fact.
 
                 Raw Press Release:
                 {pr_text}
