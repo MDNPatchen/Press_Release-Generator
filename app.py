@@ -3,7 +3,7 @@ from google import genai
 
 # 1. Page Title and Instructions
 st.title("📰 Press Release to Business Brief")
-st.write("Paste a bloated press release below. This tool will strip the marketing fluff and rewrite it into an objective, AP-style brief under 200 words.")
+st.write("Paste a bloated press release below. This tool will strip the marketing fluff and rewrite it into an objective, AP-style brief less than 200 words.")
 
 # 2. Securely load the API key from Streamlit Secrets
 try:
@@ -30,7 +30,7 @@ if st.button("Generate Brief"):
                 and rewrite it into a clean, objective business brief for a newspaper.
 
                 Strict Rules:
-                1. Keep the total word count strictly under 200 words.
+                1. Keep the total word count strictly less than 200 words.
                 2. Focus only on the core news: Who, what, when, where, and why.
                 3. Strip out all marketing fluff, corporate jargon, and exaggerated claims.
                 4. Write in traditional AP style (third-person, objective tone).
@@ -41,7 +41,7 @@ if st.button("Generate Brief"):
                 """
                 
                 response = client.models.generate_content(
-                    model='gemini-2.5-flash',
+                    model='gemini-1.5-flash',
                     contents=prompt,
                 )
                 
