@@ -41,7 +41,7 @@ if st.button("Generate Brief"):
                 """
                 
                 response = client.models.generate_content(
-                    model='gemini-flash',
+                    model='gemini-3.6-flash',
                     contents=prompt,
                 )
                 
