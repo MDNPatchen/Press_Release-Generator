@@ -33,13 +33,13 @@ if st.button("Generate Brief"):
     else:
         with st.spinner("Editing..."):
             try:
-                # UPDATED PROMPT: Now includes instructions for a suggested headline
+                # UPDATED PROMPT: Headline length restriction added
                 prompt = f"""
                 You are a veteran newspaper copy editor. Take the following press release 
                 and rewrite it into a clean, objective business brief for a newspaper.
 
                 Strict Rules:
-                1. Provide a suggested newspaper headline at the very top, formatted as "HEADLINE: [Your Suggested Headline]".
+                1. Provide a suggested newspaper headline at the very top, formatted as "HEADLINE: [Your Suggested Headline]". This headline MUST be limited to a maximum of 4 words or 30 characters (including spaces).
                 2. Keep the total word count of the brief strictly under {word_count} words.
                 3. Write the body of the brief ONLY in standard paragraph form. Do not use bullet points, numbered lists, or special formatting.
                 4. Write in strict AP (Associated Press) style (third-person, objective tone, correct dateline formatting, proper title capitalization, etc.).
